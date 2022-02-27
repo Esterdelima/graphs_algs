@@ -1,21 +1,6 @@
-#include <bits/stdc++.h> 
-using namespace std;
+#include "bellman-ford.h"
 
-struct Path {
-	int orig;
-    int dest;
-    int weight;
-};
-typedef struct Path path;
-
-struct Graph {
-    int Vert;
-    int Edges;
-    Path* path;
-};
-typedef struct Graph graph;
-  
-struct Graph* createGraph(int V, int E) 
+graph* createGraph(int V, int E) 
 { 
     Graph* graph = (Graph*)malloc(sizeof(Graph));
     graph->Vert = V; 
@@ -57,7 +42,7 @@ void BellmanFord(struct Graph* graph, int src)
         int v = graph->path[i].dest; 
         int weight = graph->path[i].weight; 
         if (dist[u] != INT_MAX && dist[u] + weight < dist[v]) { 
-           printf("Graph contains negative weight cycle"); 
+           printf("Graph contains negative weight cycle\n"); 
             return;
         } 
     } 
@@ -65,28 +50,4 @@ void BellmanFord(struct Graph* graph, int src)
     printArr(dist, V);
   
     return; 
-} 
-
-int main(){
-    
-    int vertex, edge, i, v1, v2, weights;
-
-    cout << "Enter the number of vertex:\n";
-    cin >> vertex;
-    cout << "Enter the number of edges:\n";
-    cin >> edge;
-
-    Graph* graphs = createGraph(vertex, edge);
-
-    cout << "Enter the relations in the format V1 V2 weight:" << "\n";
-    for(i = 0; i < edge; i++){
-        cin >> v1 >> v2 >> weights;
-        graphs->path[i].orig = v1;
-        graphs->path[i].dest = v2;
-        graphs->path[i].weight = v2;
-    }
-
-    BellmanFord(graphs, 0);
-
-    return 0;
 }

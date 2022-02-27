@@ -1,8 +1,4 @@
-#include<bits/stdc++.h>
-#define INF 0x3f3f3f3f
-using namespace std;
-
-typedef pair <int, int>Pair;
+#include "prim.h"
 
 void adcAresta(vector <pair<int, int>> adj[], int vertice1, int vertice2, int peso){
 	adj[vertice1].push_back(make_pair(vertice2,peso));
@@ -45,27 +41,4 @@ void Prim(vector<pair<int,int>> adj[], int vertice)
     {
         printf("%d --- %d\n",pai[i],i);
     }
-}
-
-
-int main()
-{
-    int vertice1,vertice2,peso;
-    int vertice,aresta;
-    //int i;
-        
-    ifstream input("graph.in");//catch the graph
-    input >> vertice >> aresta;//catch the number of vertice and aresta
-    vector<Pair> adj[vertice];
-    
-    for(int i=0;i<aresta;i++)//fills the graph
-    {
-        input >> vertice1 >> vertice2 >> peso;
-        adcAresta(adj,vertice1,vertice2,peso);
-    }
-    printf("\n");
-    printf("Minimum spanning tree:\n");
-    printf("\n");
-    Prim(adj,vertice);//run the Prim algorithm
-    printf("\n");
 }
