@@ -13,7 +13,7 @@ class Grafo{
 public:
     Grafo(int vertice);
     void adcAresta(int vertc1, int vertc2, int peso);
-    void Dijkstra(int fonte);
+    void Dijkstra(int fonte, int final);
 };
 
 

@@ -1,5 +1,5 @@
-build: main.cpp dijkstra.cpp
-	g++ main.cpp dijkstra.cpp -o dijkstra
+build: main.cpp dijkstra.cpp ../utils/utils.cpp
+	g++ main.cpp dijkstra.cpp ../utils/utils.cpp -o dijkstra
 
 clean:
 	rm dijkstra

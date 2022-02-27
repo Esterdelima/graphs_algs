@@ -15,7 +15,7 @@ void Grafo::adcAresta(int vertc1, int vertc2, int peso){
     adj[vertc1].push_back(make_pair(vertc2, peso));
 }
 
-void Grafo::Dijkstra(int fonte){
+void Grafo::Dijkstra(int fonte, int final){
     priority_queue<Pair,vector<Pair>,greater<Pair>> priority_queue;
     vector<int> distancia(vertice, INF);
     priority_queue.push(make_pair(0, fonte));
@@ -34,7 +34,22 @@ void Grafo::Dijkstra(int fonte){
             }
         }
     }
-    for (int i = 0; i < vertice; ++i){
-        printf("Menor distancia do vertice %d ao vertice origem = %d\n", i,distancia[i]);
+    // for (int i = 0; i < vertice; ++i){
+    //     printf("Menor distancia do vertice %d ao vertice origem = %d\n", i,distancia[i]);
+    // }
+
+    printf("\n");
+    printf("Dijkstra algorithm:\n");
+    printf("\n");
+    if (final > 0){
+        for (int i = 0; i < final; ++i){
+            printf("Menor distancia do vertice %d ao vertice origem = %d\n", i,distancia[i]);
+        }
     }
+    else{
+        for (int i = 0; i < vertice; ++i){
+            printf("Menor distancia do vertice %d ao vertice origem = %d\n", i,distancia[i]);
+        }
+    }
+    printf("\n");
 }
